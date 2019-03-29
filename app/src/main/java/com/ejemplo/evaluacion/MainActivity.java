@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ejemplo.evaluacion.Utils.AppConstants;
+
 import java.sql.Array;
 import java.util.ArrayList;
 
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button mEnviar;
 
-    Array data;
+    String[] data = new String[3];
 
     int c1, c2, c3, c4, c5, c6, c7, c8, c9, cTotal = 0;
 
@@ -67,10 +69,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mL9.setOnClickListener(this);
 
 
+        data[0] = mUsername.getText().toString();
+        data[1] = mUsermail.getText().toString();
+
         mEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cTotal = c1+c2+c3+c4+c5+c6+c7+c8+c9;
+                data[0] = mUsername.getText().toString();
+                data[1] = mUsermail.getText().toString();
+                data[2] = Integer.toString(cTotal);
+
                 Intent mIntent = new Intent(MainActivity.this, NewActivity.class);
+                mIntent.putExtra(AppConstants.DATA, data);
+                startActivity(mIntent);
+
             }
         });
     }
