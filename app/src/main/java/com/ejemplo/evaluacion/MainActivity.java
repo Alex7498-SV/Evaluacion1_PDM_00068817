@@ -1,5 +1,6 @@
 package com.ejemplo.evaluacion;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.sql.Array;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -17,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText mUsername, mUsermail;
 
     Button mEnviar;
+
+    Array data;
 
     int c1, c2, c3, c4, c5, c6, c7, c8, c9, cTotal = 0;
 
@@ -42,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mL5= findViewById(R.id.l5);
         mL6= findViewById(R.id.l6);
         mL7 = findViewById(R.id.l7);
-        mL8 = findViewById(R.id.l8;
-        mL9 = findViewById(R.id.l9;
+        mL8 = findViewById(R.id.l8);
+        mL9 = findViewById(R.id.l9);
 
         mUsername = findViewById(R.id.username);
         mUsermail = findViewById(R.id.usermail);
@@ -59,6 +65,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mL7.setOnClickListener(this);
         mL8.setOnClickListener(this);
         mL9.setOnClickListener(this);
+
+
+        mEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(MainActivity.this, NewActivity.class);
+            }
+        });
     }
 
 
@@ -107,5 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mProd9.setText(Integer.toString(c9));
                 break;
         }
+
     }
 }
